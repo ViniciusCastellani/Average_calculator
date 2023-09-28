@@ -1,62 +1,28 @@
 import tkinter as tk
-from tkinter import simpledialog 
+from tkinter import simpledialog
 
-"""
-----------------------------------------------
-simpledialog = Serve para abrir, criar uma janela secundaria, simplifica o processo de troca de informação 
-               do usuário, input e output
+# Function for calculating the average
+def calculate_average():
+    number1 = simpledialog.askfloat("Enter Number", "Enter the first number:")
+    number2 = simpledialog.askfloat("Enter Number", "Enter the second number:")
 
-tk.Tk() = cria a janela principal
-
-.title = coloca o titulo da janela
-
-tk.button(aonde o botao vai estar, text = "coloca texto dento do botao") = cria um botao
-
-pack(padx = posicao x, pady = posicao y) = chamar o pacote de funções da biblioteca do tkinter, interface, 
-                                           caracteristicas, funções do tkinter
-
-simpledialog.askfloat("Titulo", "mensagem para o usuario") = abre uma janela secundária para o usuario
-                                                             inserir um numero float
-
-None = Vazio
-
-{variavel:.2f} = formata em 2 casas decimais, deixa apenas 2 numeros após a virgula
-
-.config = configura uma variável, por exemplo um label para reescrever algum texto, por exemplo,
-          nessa variavel
-
-mainloop() = deixa a janela aberta até o usuário fechar
-----------------------------------------------
-"""
-
-#----------------------------------------------
-#CRIACAO DE UMA ROTINA, FUNÇÃO
-
-def calcular_media():
-    numero1 = simpledialog.askfloat("Solicitar o numero", "Digite o primeiro numero:")
-    numero2 = simpledialog.askfloat("Solicitar o numero", "Digite o segundo numero:")
-    
-    if numero1 is not None and numero2 is not None:
-        media = (numero1 + numero2) / 2
-        resultado_label.config(text = f"A media dos numeros é: {media:.2f}")
+    if number1 is not None and number2 is not None:
+        average = (number1 + number2) / 2
+        result_label.config(text=f"The average of the numbers is: {average:.2f}")
     else:
-        resultado_label.config(text= "Erro ao solicitar os valores!")
-#----------------------------------------------
-#CRIA A JANELA
+        result_label.config(text="Error in requesting values!")
 
-janela = tk.Tk() 
-janela.title("Calculadora de media")
-#----------------------------------------------
-#CRIA O ROTULO PARA SOLICITAR OS VALORES
+# Create the main window
+window = tk.Tk()
+window.title("Average Calculator")
 
-resultado_label = tk.Label(janela, text= "")
-resultado_label.pack(pady =20)
-#----------------------------------------------
-#CRIAÇAO DE UM BOTAO
+# Create a label to request values
+result_label = tk.Label(window, text="")
+result_label.pack(pady=20)
 
-botao = tk.Button(janela, text = "calcular a media", command = calcular_media)
-botao.pack()
-#----------------------------------------------
+# Create a button to trigger the calculation
+calculate_button = tk.Button(window, text="Calculate Average", command=calculate_average)
+calculate_button.pack()
 
-janela.mainloop()
+window.mainloop()
 
